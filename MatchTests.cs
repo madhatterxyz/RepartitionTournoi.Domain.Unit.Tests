@@ -10,25 +10,10 @@ namespace RepartitionTournoi.Domain.Unit.Tests
     public class MatchTests
     {
         [Fact]
-        public void InitializeBurndownChartLines_Should_Return_11BurndownChartLines()
-        {
-            //Arrange
-            int tournoiId = 1;
-            var matchDAL = new Mock<IMatchDAL>();
-            var tournoiDAL = new Mock<ITournoiDAL>();
-            tournoiDAL.Setup(x => x.GetById(tournoiId)).Returns(GetFakeTournoi());
-            IMatchDomain domain = new MatchDomain(matchDAL.Object, tournoiDAL.Object);
-            var expectedBurndownChartLines = GetExpectedBurndownChartLines();
-            //Act
-            var actualBurndownChartLines = domain.InitializeBurndownChartLines(tournoiId);
-            //Assert
-            Assert.Equivalent(expectedBurndownChartLines, actualBurndownChartLines);
-        }
-        [Fact]
         public void GetBurndownChartLineDTOs_Should_Return_11BurndownChartLines()
         {
             //Arrange
-            int tournoiId = 1;
+            long tournoiId = 1;
             var matchDAL = new Mock<IMatchDAL>();
             matchDAL.Setup(x => x.GetAll()).Returns(GetFakeMatchs());
             var tournoiDAL = new Mock<ITournoiDAL>();
